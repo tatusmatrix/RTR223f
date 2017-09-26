@@ -1,3 +1,5 @@
+# schematic according to superposition.sch
+
 R1 = 10.
 R2 = 20.
 R3 = 30.

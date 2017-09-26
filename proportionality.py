@@ -1,5 +1,3 @@
-# Main file of the Python program.
-# print "Hello World!"
 R1 = 3.
 R2 = 12.
 R3 = 6.

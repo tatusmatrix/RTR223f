@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>HW2_EN</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>HW3_EN</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11775,77 +11775,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW2_1_EN.PNG" align="left"></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># for connection in series current is the same for all elements, voltage divider rule could be used</span>
-<span class="c1"># for connection in parallel voltage is the same for all branches, current divider rule could be used</span>
-<span class="n">Us</span><span class="o">=</span><span class="mf">24.</span><span class="p">;</span> <span class="n">R1</span><span class="o">=</span><span class="mf">5.</span><span class="p">;</span> <span class="n">R2</span><span class="o">=</span><span class="mf">3.</span><span class="p">;</span> <span class="n">R3</span><span class="o">=</span><span class="mf">10.</span><span class="p">;</span> <span class="n">R4</span><span class="o">=</span><span class="mf">2.</span><span class="p">;</span> <span class="n">R5</span><span class="o">=</span><span class="mf">5.</span><span class="p">;</span> <span class="n">R6</span><span class="o">=</span><span class="mf">8.</span><span class="p">;</span> <span class="n">R7</span><span class="o">=</span><span class="mf">4.</span><span class="p">;</span> <span class="n">R8</span><span class="o">=</span><span class="mf">5.</span><span class="p">;</span> <span class="n">R9</span><span class="o">=</span><span class="mf">7.</span>
-<span class="c1"># R7 V R9 V R8</span>
-<span class="n">Req1</span> <span class="o">=</span> <span class="n">R7</span> <span class="o">+</span> <span class="n">R9</span> <span class="o">+</span> <span class="n">R8</span>
-<span class="c1"># R6 || Req1</span>
-<span class="n">Req2</span> <span class="o">=</span> <span class="n">R6</span> <span class="o">*</span> <span class="n">Req1</span> <span class="o">/</span> <span class="p">(</span><span class="n">R6</span> <span class="o">+</span> <span class="n">Req1</span><span class="p">)</span>
-<span class="c1"># R4 V Req2 V R5</span>
-<span class="n">Req3</span> <span class="o">=</span> <span class="n">R4</span> <span class="o">+</span> <span class="n">Req2</span> <span class="o">+</span> <span class="n">R5</span>
-<span class="c1"># R3 || Req3</span>
-<span class="n">Req4</span> <span class="o">=</span> <span class="n">R3</span> <span class="o">*</span> <span class="n">Req3</span> <span class="o">/</span> <span class="p">(</span><span class="n">R3</span> <span class="o">+</span> <span class="n">Req3</span><span class="p">)</span>
-<span class="c1"># R1 V Req4 V R2</span>
-<span class="n">Req</span> <span class="o">=</span> <span class="n">R1</span> <span class="o">+</span> <span class="n">Req4</span> <span class="o">+</span> <span class="n">R2</span>
-<span class="n">I_through_R1_Req4_R2_or_through_Req</span>  <span class="o">=</span> <span class="n">Us</span> <span class="o">/</span> <span class="n">Req</span>
-<span class="n">I_through_R4_Req2_R5_or_through_Req3</span> <span class="o">=</span> <span class="n">I_through_R1_Req4_R2_or_through_Req</span>  <span class="o">*</span> <span class="n">R3</span> <span class="o">/</span> <span class="p">(</span><span class="n">R3</span> <span class="o">+</span> <span class="n">Req3</span><span class="p">)</span>
-<span class="n">I_through_R7_R9_R8_or_through_Req1</span>   <span class="o">=</span> <span class="n">I_through_R4_Req2_R5_or_through_Req3</span> <span class="o">*</span> <span class="n">R6</span> <span class="o">/</span> <span class="p">(</span><span class="n">R6</span> <span class="o">+</span> <span class="n">Req1</span><span class="p">)</span>
-<span class="n">I9</span>  <span class="o">=</span> <span class="n">I_through_R7_R9_R8_or_through_Req1</span>
-<span class="n">Uab</span> <span class="o">=</span> <span class="n">I9</span> <span class="o">*</span> <span class="n">R9</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Req1=</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">Req2=</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">Req3=</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">Req4=</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">Req =</span><span class="si">%6.3f</span><span class="se">\u03A9</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">Req1</span><span class="p">,</span><span class="n">Req2</span><span class="p">,</span><span class="n">Req3</span><span class="p">,</span><span class="n">Req4</span><span class="p">,</span><span class="n">Req</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I1  =</span><span class="si">%6.3f</span><span class="s2">A&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">I_through_R1_Req4_R2_or_through_Req</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I4  =</span><span class="si">%6.3f</span><span class="s2">A&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">I_through_R4_Req2_R5_or_through_Req3</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I9  =</span><span class="si">%6.3f</span><span class="s2">A&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">I_through_R7_R9_R8_or_through_Req1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Uab =</span><span class="si">%6.3f</span><span class="s2">V&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">Uab</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Req1=16.000Ω
-Req2= 5.333Ω
-Req3=12.333Ω
-Req4= 5.522Ω
-Req =13.522Ω
-I1  = 1.775A
-I4  = 0.795A
-I9  = 0.265A
-Uab = 1.854V
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW2_1_EN_pspice.PNG" align="left"></p>
+<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW3_1_EN.PNG" align="left"></p>
 
 </div>
 </div>
@@ -11854,84 +11784,7 @@ Uab = 1.854V
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW2_2_EN.PNG" align="left"></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Us</span><span class="o">=</span><span class="mf">10.</span><span class="p">;</span> <span class="n">R1</span><span class="o">=</span><span class="mf">4.</span><span class="p">;</span> <span class="n">R2</span><span class="o">=</span><span class="mf">1.</span><span class="p">;</span> <span class="n">R3</span><span class="o">=</span><span class="mf">3.</span><span class="p">;</span> <span class="n">R4</span><span class="o">=</span><span class="mf">5.</span><span class="p">;</span> <span class="n">R5</span><span class="o">=</span><span class="mf">2.</span><span class="p">;</span> <span class="n">R6</span><span class="o">=</span><span class="mf">10.</span><span class="p">;</span> <span class="n">R7</span><span class="o">=</span><span class="mf">4.</span><span class="p">;</span> <span class="n">R8</span><span class="o">=</span><span class="mf">12.</span><span class="p">;</span> <span class="n">R9</span><span class="o">=</span><span class="mf">7.</span>
-<span class="c1"># delta network: R6, R4, R8</span>
-<span class="n">R64</span> <span class="o">=</span> <span class="n">R6</span> <span class="o">*</span> <span class="n">R4</span> <span class="o">/</span> <span class="p">(</span><span class="n">R6</span> <span class="o">+</span> <span class="n">R4</span> <span class="o">+</span> <span class="n">R8</span><span class="p">)</span>
-<span class="n">R48</span> <span class="o">=</span> <span class="n">R4</span> <span class="o">*</span> <span class="n">R8</span> <span class="o">/</span> <span class="p">(</span><span class="n">R6</span> <span class="o">+</span> <span class="n">R4</span> <span class="o">+</span> <span class="n">R8</span><span class="p">)</span>
-<span class="n">R86</span> <span class="o">=</span> <span class="n">R8</span> <span class="o">*</span> <span class="n">R6</span> <span class="o">/</span> <span class="p">(</span><span class="n">R6</span> <span class="o">+</span> <span class="n">R4</span> <span class="o">+</span> <span class="n">R8</span><span class="p">)</span>
-<span class="c1"># R48 V R7</span>
-<span class="n">R487</span> <span class="o">=</span> <span class="n">R48</span> <span class="o">+</span> <span class="n">R7</span>
-<span class="c1"># delta network: R64, R3, R487</span>
-<span class="n">R643</span>   <span class="o">=</span> <span class="n">R64</span>  <span class="o">*</span> <span class="n">R3</span>   <span class="o">/</span> <span class="p">(</span><span class="n">R64</span> <span class="o">+</span> <span class="n">R3</span> <span class="o">+</span> <span class="n">R487</span><span class="p">)</span>
-<span class="n">R3487</span>  <span class="o">=</span> <span class="n">R3</span>   <span class="o">*</span> <span class="n">R487</span> <span class="o">/</span> <span class="p">(</span><span class="n">R64</span> <span class="o">+</span> <span class="n">R3</span> <span class="o">+</span> <span class="n">R487</span><span class="p">)</span>
-<span class="n">R48764</span> <span class="o">=</span> <span class="n">R487</span> <span class="o">*</span> <span class="n">R64</span>  <span class="o">/</span> <span class="p">(</span><span class="n">R64</span> <span class="o">+</span> <span class="n">R3</span> <span class="o">+</span> <span class="n">R487</span><span class="p">)</span>
-<span class="c1"># R1 V R5 V R86 V R48764</span>
-<span class="n">Req1</span> <span class="o">=</span> <span class="n">R1</span> <span class="o">+</span> <span class="n">R5</span> <span class="o">+</span> <span class="n">R86</span> <span class="o">+</span> <span class="n">R48764</span>
-<span class="c1"># Req1 || R643</span>
-<span class="n">Req2</span> <span class="o">=</span> <span class="n">Req1</span> <span class="o">*</span> <span class="n">R643</span> <span class="o">/</span> <span class="p">(</span><span class="n">Req1</span> <span class="o">+</span> <span class="n">R643</span><span class="p">)</span>
-<span class="c1"># R2 V R3487</span>
-<span class="n">Req3</span> <span class="o">=</span> <span class="n">R2</span> <span class="o">+</span> <span class="n">R3487</span>
-<span class="c1"># Req2 V Req3</span>
-<span class="n">Req</span> <span class="o">=</span> <span class="n">Req2</span> <span class="o">+</span> <span class="n">Req3</span>
-<span class="n">Ius</span> <span class="o">=</span> <span class="n">Us</span> <span class="o">/</span> <span class="n">Req</span>
-<span class="n">I_through_R48764_R86_R5_R1_or_through_Req1_up_direction</span> <span class="o">=</span> <span class="n">Ius</span> <span class="o">*</span> <span class="n">R643</span> <span class="o">/</span> <span class="p">(</span><span class="n">R643</span> <span class="o">+</span> <span class="n">Req1</span><span class="p">)</span>
-<span class="n">I1</span> <span class="o">=</span> <span class="o">-</span><span class="n">I_through_R48764_R86_R5_R1_or_through_Req1_up_direction</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R64   =</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">R48   =</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">R86   =</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">R487  =</span><span class="si">%6.3f</span><span class="se">\u03A9</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">R64</span><span class="p">,</span><span class="n">R48</span><span class="p">,</span><span class="n">R86</span><span class="p">,</span><span class="n">R487</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R643  =</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">R3487 =</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">R48764=</span><span class="si">%6.3f</span><span class="se">\u03A9</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">R643</span><span class="p">,</span><span class="n">R3487</span><span class="p">,</span><span class="n">R48764</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Req1  =</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">Req2  =</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">Req3  =</span><span class="si">%6.3f</span><span class="se">\u03A9\n</span><span class="s2">Req   =</span><span class="si">%6.3f</span><span class="se">\u03A9</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">Req1</span><span class="p">,</span><span class="n">Req2</span><span class="p">,</span><span class="n">Req3</span><span class="p">,</span><span class="n">Req</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ius   =</span><span class="si">%6.3f</span><span class="s2">A</span><span class="se">\n</span><span class="s2">I1    =</span><span class="si">%6.3f</span><span class="s2">A&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">Ius</span><span class="p">,</span><span class="n">I1</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>R64   = 1.852Ω
-R48   = 2.222Ω
-R86   = 4.444Ω
-R487  = 6.222Ω
-R643  = 0.502Ω
-R3487 = 1.686Ω
-R48764= 1.041Ω
-Req1  =11.485Ω
-Req2  = 0.481Ω
-Req3  = 2.686Ω
-Req   = 3.166Ω
-Ius   = 3.158A
-I1    =-0.132A
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW2_2_EN_pspice.PNG" align="left"></p>
+<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW3_1_EN_pspice.PNG" align="left"></p>
 
 </div>
 </div>
@@ -11940,61 +11793,7 @@ I1    =-0.132A
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW2_3_EN.PNG" align="left"></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Us1</span><span class="o">=</span><span class="mf">16.</span><span class="p">;</span> <span class="n">Us2</span><span class="o">=</span><span class="mf">4.</span><span class="p">;</span> <span class="n">Is1</span><span class="o">=</span><span class="mf">5.</span><span class="p">;</span> <span class="n">R1</span><span class="o">=</span><span class="mf">4.</span><span class="p">;</span> <span class="n">R2</span><span class="o">=</span><span class="mf">1.</span><span class="p">;</span> <span class="n">R3</span><span class="o">=</span><span class="mf">3.</span><span class="p">;</span> <span class="n">R4</span><span class="o">=</span><span class="mf">2.</span><span class="p">;</span> <span class="n">R5</span><span class="o">=</span><span class="mf">2.</span>
-<span class="c1"># Us1 on, Us2 off, Is1 off</span>
-<span class="c1"># R1 V (R2 || R3) V R5 V R4</span>
-<span class="n">I3a</span> <span class="o">=</span> <span class="n">Us1</span> <span class="o">/</span> <span class="p">(</span><span class="n">R1</span> <span class="o">+</span> <span class="n">R2</span> <span class="o">*</span> <span class="n">R3</span> <span class="o">/</span> <span class="p">(</span><span class="n">R2</span> <span class="o">+</span> <span class="n">R3</span><span class="p">)</span> <span class="o">+</span> <span class="n">R5</span> <span class="o">+</span> <span class="n">R4</span><span class="p">)</span>  <span class="o">*</span>  <span class="n">R2</span> <span class="o">/</span> <span class="p">(</span><span class="n">R2</span> <span class="o">+</span> <span class="n">R3</span><span class="p">)</span>
-<span class="c1"># Us1 off, Us2 on, Is1 off</span>
-<span class="c1"># R2 V ((R1 + R4 + R5) || R3)</span>
-<span class="n">I3b</span> <span class="o">=</span> <span class="n">Us2</span> <span class="o">/</span> <span class="p">(</span><span class="n">R2</span> <span class="o">+</span> <span class="p">(</span><span class="n">R1</span> <span class="o">+</span> <span class="n">R4</span> <span class="o">+</span> <span class="n">R5</span><span class="p">)</span> <span class="o">*</span> <span class="n">R3</span> <span class="o">/</span> <span class="p">((</span><span class="n">R1</span> <span class="o">+</span> <span class="n">R4</span> <span class="o">+</span> <span class="n">R5</span><span class="p">)</span> <span class="o">+</span> <span class="n">R3</span><span class="p">))</span>  <span class="o">*</span>  <span class="p">(</span><span class="n">R1</span> <span class="o">+</span> <span class="n">R4</span> <span class="o">+</span> <span class="n">R5</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">R1</span> <span class="o">+</span> <span class="n">R4</span> <span class="o">+</span> <span class="n">R5</span><span class="p">)</span> <span class="o">+</span> <span class="n">R3</span><span class="p">)</span>
-<span class="c1"># Us1 off, Us2 off, Is1 on</span>
-<span class="c1"># R4 || (R1 V (R2 || R3) V R5)</span>
-<span class="n">I3c</span> <span class="o">=</span> <span class="n">Is1</span>  <span class="o">*</span>  <span class="n">R4</span> <span class="o">/</span> <span class="p">(</span><span class="n">R4</span> <span class="o">+</span> <span class="n">R1</span> <span class="o">+</span> <span class="n">R2</span> <span class="o">*</span> <span class="n">R3</span> <span class="o">/</span> <span class="p">(</span><span class="n">R2</span> <span class="o">+</span> <span class="n">R3</span><span class="p">)</span> <span class="o">+</span> <span class="n">R5</span><span class="p">)</span>  <span class="o">*</span>  <span class="n">R2</span> <span class="o">/</span> <span class="p">(</span><span class="n">R2</span> <span class="o">+</span> <span class="n">R3</span><span class="p">)</span>
-<span class="n">I3</span> <span class="o">=</span> <span class="n">I3a</span> <span class="o">+</span> <span class="n">I3b</span> <span class="o">+</span> <span class="n">I3c</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I3a = </span><span class="si">%6.3f</span><span class="s2">A</span><span class="se">\n</span><span class="s2">I3b = </span><span class="si">%6.3f</span><span class="s2">A</span><span class="se">\n</span><span class="s2">I3c = </span><span class="si">%6.3f</span><span class="s2">A</span><span class="se">\n</span><span class="s2">I3  = </span><span class="si">%6.3f</span><span class="s2">A&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">I3a</span><span class="p">,</span><span class="n">I3b</span><span class="p">,</span><span class="n">I3c</span><span class="p">,</span><span class="n">I3</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>I3a =  0.457A
-I3b =  0.914A
-I3c =  0.286A
-I3  =  1.657A
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW2_3_EN_pspice.PNG" align="left"></p>
+<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW3_2_EN.PNG" align="left"></p>
 
 </div>
 </div>
@@ -12003,58 +11802,43 @@ I3  =  1.657A
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW2_4_EN.PNG" align="left"></p>
+<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW3_2_EN_pspice.PNG" align="left"></p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Us1</span><span class="o">=</span><span class="mf">20.</span><span class="p">;</span> <span class="n">Is1</span><span class="o">=</span><span class="mf">2.</span><span class="p">;</span> <span class="n">r</span><span class="o">=</span><span class="mf">2.</span><span class="p">;</span> <span class="n">R1</span><span class="o">=</span><span class="mf">5.</span><span class="p">;</span> <span class="n">R2</span><span class="o">=</span><span class="mf">8.</span><span class="p">;</span> <span class="n">R3</span><span class="o">=</span><span class="mf">7.</span><span class="p">;</span> <span class="n">R4</span><span class="o">=</span><span class="mf">9.</span><span class="p">;</span> <span class="n">R5</span><span class="o">=</span><span class="mf">4.</span><span class="p">;</span> <span class="n">R6</span><span class="o">=</span><span class="mf">9.</span><span class="p">;</span> <span class="n">R7</span><span class="o">=</span><span class="mf">12.</span>
-<span class="c1"># a priori without any calculations - I4 is Is1, because R4 is in series with Is1 or I4 is input and Is1 is output current</span>
-<span class="c1"># Us1 on, Is1 off</span>
-<span class="c1"># because R4 is in series with Is1, then if Is1 is off it is like o.c. (current trough o.c. is zero)</span>
-<span class="n">I4a</span> <span class="o">=</span> <span class="mf">0.</span>
-<span class="c1"># Us1 off, Is1 on</span>
-<span class="c1"># (((R1 V R2) || R3) V R4) and it is in series with Is1</span>
-<span class="n">I4b</span> <span class="o">=</span> <span class="n">Is1</span>
-<span class="n">I4</span> <span class="o">=</span> <span class="n">I4a</span> <span class="o">+</span> <span class="n">I4b</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I4a = </span><span class="si">%6.3f</span><span class="s2">A</span><span class="se">\n</span><span class="s2">I4b = </span><span class="si">%6.3f</span><span class="s2">A</span><span class="se">\n</span><span class="s2">I4  = </span><span class="si">%6.3f</span><span class="s2">A&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">I4a</span><span class="p">,</span><span class="n">I4b</span><span class="p">,</span><span class="n">I4</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>I4a =  0.000A
-I4b =  2.000A
-I4  =  2.000A
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW2_4_EN_pspice.PNG" align="left"></p>
+<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW3_3_EN.PNG" align="left"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW3_3_EN_pspice.PNG" align="left"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW3_4_EN.PNG" align="left"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://raw.githubusercontent.com/tatusmatrix/RTR223f/master/2018_2019/images/HW3_4_EN_pspice.PNG" align="left"></p>
 
 </div>
 </div>
